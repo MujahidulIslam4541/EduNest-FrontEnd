@@ -8,7 +8,9 @@ const MainLayOut = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <section className='min-h-96'>
+                <Outlet></Outlet>
+            </section>
             <Footer></Footer>
         </div>
     )
