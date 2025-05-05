@@ -2,6 +2,8 @@ import React from 'react'
 import loginLottieData from '../../../assets/Lotti/Login.json'
 import Lottie from 'lottie-react'
 import { Link } from 'react-router'
+import Google from '../../../components/hooks/LoginWithGoogle/Google'
+import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
 
 const Login = () => {
   const handleLogin = (e) => {
@@ -60,6 +62,11 @@ const Login = () => {
 
               <button type="submit" className="btn btn-neutral w-full mt-2">Login</button>
             </form>
+            <div className='divider'>OR</div>
+            <div className='flex justify-center gap-2'>
+              <Google></Google>
+              <Facebook></Facebook>
+            </div>
           </div>
         </div>
 

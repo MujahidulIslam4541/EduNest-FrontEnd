@@ -3,8 +3,22 @@ import React from 'react'
 import { Link } from 'react-router'
 import RegisterLottieData from '../../../assets/Lotti/register.json'
 import { FaFileUpload } from 'react-icons/fa'
+import Google from '../../../components/hooks/LoginWithGoogle/Google'
+import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
+
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault()
+    // const data = e.target;
+    // const name = data.name.value
+    // const email = data.email.value
+    // const password = data.password.value
+    const name=e.target.name.value;
+    const email=e.target.email.value;
+    const password=e.target.value;
+    console.log({ name, email, password })
+  }
   return (
     <div className="hero bg-base-200 min-h-screen px-4">
       <div className="hero-content flex-col lg:flex-row-reverse gap-10 w-full max-w-6xl">
@@ -18,24 +32,24 @@ const Register = () => {
         <div className="card bg-base-100 w-full max-w-md shadow-2xl">
           <div className="card-body">
             <h2 className="text-2xl font-bold text-center mb-4">Create A New Account</h2>
-            <form action="" className='space-y-4'>
+            <form onClick={handleRegister} action="" className='space-y-4'>
               {/* name Field */}
               <div>
                 <label className='label font-medium'>Name</label>
-                <input type="text" 
-                name='name' 
-                className='input input-border w-full' 
-                placeholder='Please Enter Your Name' 
-                required />
+                <input type="text"
+                  name='name'
+                  className='input input-border w-full'
+                  placeholder='Please Enter Your Name'
+                  required />
               </div>
               {/* email Field */}
               <div>
                 <label className='label font-medium'>Email</label>
                 <input type="email"
-                 name='email' 
-                 className='input input-border w-full' 
-                 placeholder='Please Enter Your Email'  
-                 required />
+                  name='email'
+                  className='input input-border w-full'
+                  placeholder='Please Enter Your Email'
+                  required />
               </div>
               {/* password field  */}
               <div>
@@ -51,7 +65,7 @@ const Register = () => {
               {/* Image Filed */}
               <div>
                 <label className='label font-medium'>Your Photo: </label>
-                <input className='border rounded w-32 p-2'  type="file" required /><FaFileUpload />
+                <input className='border rounded w-32 p-2' type="file" /><FaFileUpload />
               </div>
               {/* Go to login page */}
               <div>
@@ -66,6 +80,10 @@ const Register = () => {
               <button type='submit' className='btn w-full btn-neutral'> SignUp</button>
             </form>
             <div className="divider">OR</div>
+            <div className='flex gap-2 justify-center'>
+              <Google></Google>
+              <Facebook></Facebook>
+            </div>
           </div>
         </div>
       </div>
