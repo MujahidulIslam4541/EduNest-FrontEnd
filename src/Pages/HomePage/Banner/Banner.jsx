@@ -4,7 +4,7 @@ import bannerImage2 from '../../../assets/bannerImage2.png'
 
 const Banner = () => {
   return (
-    <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6 px-4 py-10 ">
+    <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 items-center gap-6 px-4 py-10 ">
       {/* Left Banner Image */}
       <div className="flex justify-center">
         <img src={bannerImage2} alt="Banner Left" className="w-full max-w-sm h-auto object-contain rounded-lg" />
