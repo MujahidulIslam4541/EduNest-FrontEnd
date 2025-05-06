@@ -1,12 +1,11 @@
 import React from 'react'
-import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router';
 
 const Navbar = () => {
     const item = [
         <li key="home"><Link to='/'>Home</Link></li>,
         <li key="about"><Link to='/about'>About US</Link></li>,
-        <li key="courses"><Link to='/courses'>Contact Us</Link></li>,
+        <li key="contact"><Link to='/contact'>Contact Us</Link></li>,
         <li key="classes"><Link to='/classes'>My Classes</Link></li>
     ]
 
