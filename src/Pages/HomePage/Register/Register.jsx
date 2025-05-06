@@ -5,18 +5,19 @@ import RegisterLottieData from '../../../assets/Lotti/register.json'
 import { FaFileUpload } from 'react-icons/fa'
 import Google from '../../../components/hooks/LoginWithGoogle/Google'
 import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
+import { FiUploadCloud } from 'react-icons/fi'
 
 
 const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault()
-    // const data = e.target;
-    // const name = data.name.value
-    // const email = data.email.value
-    // const password = data.password.value
-    const name=e.target.name.value;
-    const email=e.target.email.value;
-    const password=e.target.value;
+    const data = e.target;
+    const name = data.name.value
+    const email = data.email.value
+    const password = data.password.value
+    // const name=e.target.name.value;
+    // const email=e.target.email.value;
+    // const password=e.target.value;
     console.log({ name, email, password })
   }
   return (
@@ -32,7 +33,7 @@ const Register = () => {
         <div className="card bg-base-100 w-full max-w-md shadow-2xl">
           <div className="card-body">
             <h2 className="text-2xl font-bold text-center mb-4">Create A New Account</h2>
-            <form onClick={handleRegister} action="" className='space-y-4'>
+            <form onSubmit={handleRegister} action="" className='space-y-4'>
               {/* name Field */}
               <div>
                 <label className='label font-medium'>Name</label>
@@ -64,8 +65,15 @@ const Register = () => {
               </div>
               {/* Image Filed */}
               <div>
-                <label className='label font-medium'>Your Photo: </label>
-                <input className='border rounded w-32 p-2' type="file" /><FaFileUpload />
+                <label className='label font-medium mb-1'>Your Photo:</label>
+                <div className='relative w-40'>
+                  <input
+                    className='border rounded w-full p-2 pr-10'
+                    type='file'
+                  />
+                  <FiUploadCloud className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg' />
+
+                </div>
               </div>
               {/* Go to login page */}
               <div>
