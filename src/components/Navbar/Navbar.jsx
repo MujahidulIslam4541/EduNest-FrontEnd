@@ -4,14 +4,12 @@ import { Link } from 'react-router';
 
 const Navbar = () => {
     const item = [
-
-        <li><Link to='/'>Home</Link></li>,
-        <li> <Link to='/about'>About US</Link></li>,
-        <li><Link to='/courses'>Courses</Link></li>,
-        <li><Link to='/classes'>My Classes</Link></li>
-
-
+        <li key="home"><Link to='/'>Home</Link></li>,
+        <li key="about"><Link to='/about'>About US</Link></li>,
+        <li key="courses"><Link to='/courses'>Courses</Link></li>,
+        <li key="classes"><Link to='/classes'>My Classes</Link></li>
     ]
+
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -28,7 +26,7 @@ const Navbar = () => {
                     </div>
                     {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
                     <div>
-                        <img src="\src\assets\Edu-Nest-Main-Logo-1.png" alt="" className='w-40 h-10'/>
+                        <img src="\src\assets\Edu-Nest-Main-Logo-1.png" alt="" className='w-40 h-10' />
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
