@@ -5,16 +5,18 @@ import Home from "../Pages/HomePage/Home.jsx/Home";
 import Login from "../Pages/HomePage/login/Login";
 import Register from "../Pages/HomePage/Register/Register";
 import Error from "../components/Error/Error";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut />,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
-      { path: "/", element: <Home></Home>},
-      { path: "/signIn", element: <Login></Login>},
-      { path: "/signUp", element: <Register></Register>}
+      { path: "/", element: <Home></Home> },
+      { path: '/about', element: <AboutUs></AboutUs> },
+      { path: "/signIn", element: <Login></Login> },
+      { path: "/signUp", element: <Register></Register> }
     ],
   },
 ]);
