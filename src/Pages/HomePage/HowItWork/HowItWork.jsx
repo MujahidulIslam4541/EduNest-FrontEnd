@@ -2,7 +2,7 @@ import React from 'react'
 
 const HowItWork = () => {
     return (
-        <div className='mt-16 container mx-auto'>
+        <div className='mt-16 container mx-auto max-w-7xl'>
             {/* How it works heading */}
             <div className='text-center mb-10 space-y-3'>
                 <h2 className="text-3xl font-bold text-gray-800 mb-2">How It Works</h2>
