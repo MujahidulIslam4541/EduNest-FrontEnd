@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router';
+import DarkMode from '../themeController/DarkMode';
 
 const Navbar = () => {
     const item = [
@@ -34,6 +35,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <div className='mr-6'><DarkMode></DarkMode></div>
                     <Link to='/signIn' className='mr-4'>Sign In</Link>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
