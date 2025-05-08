@@ -1,5 +1,6 @@
 import React from 'react'
 import coursesImage1 from '../../../assets/coursesImage1.jpg'
+import { Link } from 'react-router'
 
 const Courses = () => {
   return (
@@ -39,8 +40,8 @@ const Courses = () => {
                 techniques with hands-on projects.
               </p>
 
-              <a
-                href="#"
+              <Link
+                to='/classDetails'
                 className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-indigo-600"
               >
                 Find out more
@@ -50,7 +51,7 @@ const Courses = () => {
                 >
                   &rarr;
                 </span>
-              </a>
+              </Link>
             </div>
           </article>
         ))}

@@ -8,6 +8,8 @@ import Error from "../components/Error/Error";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/contactUs/ContactUs";
 import Classes from "../Pages/classes/classes";
+import ClassDetails from "../Pages/classDetails/ClassDetails";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +21,15 @@ const router = createBrowserRouter([
       { path: '/about', element: <AboutUs></AboutUs> },
       { path: '/contact', element: <ContactUs></ContactUs> },
       { path: '/classes', element: <Classes></Classes> },
+      { path: '/classDetails', element: <ClassDetails></ClassDetails> },
       { path: "/signIn", element: <Login></Login> },
       { path: "/signUp", element: <Register></Register> }
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>
+  }
 ]);
 
 export default router;
