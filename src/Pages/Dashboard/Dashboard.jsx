@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/Edu-Nest-Main-Logo-1.png'
 import { Link } from 'react-router'
-import { GiProgression } from "react-icons/gi";
+import { GiHamburgerMenu, GiProgression } from "react-icons/gi";
 import { SiCoursera } from "react-icons/si";
 import { FaUserCircle, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
@@ -11,14 +11,32 @@ import { RiAdminLine } from "react-icons/ri";
 
 const Dashboard = () => {
     const teacher = true;
+    const [isSideBarOpen, setSideBarOpen] = useState(false)
 
     return (
         <div className='flex '>
+            {/* top navbar or header */}
+            <div className="lg:hidden p-4 ">
+                <button onClick={() => setSideBarOpen(!isSideBarOpen)}>
+                    <GiHamburgerMenu className="text-2xl" />
+                </button>
+            </div>
+
+            {
+                isSideBarOpen && (
+                    <div onClick={() => setSideBarOpen(false)} className="fixed inset-0 bg-black opacity-40 z-40 lg:hidden">
+
+                    </div>
+                )
+            }
+
             {/* sidebar section */}
-            <div className="w-68 min-h-lvh bg-white shadow-2xl rounded-xl">
+            <div className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out w-64
+  ${isSideBarOpen ? 'translate-x-0' : '-translate-x-full'} 
+  lg:relative lg:translate-x-0 lg:block`}>
 
                 {/* logo part */}
-                <div className="  py-4 px-6 flex justify-center items-center rounded-b-lg">
+                <div className=" py-4 px-6 flex justify-center items-center rounded-b-lg">
                     <Link
                         to="/"
                         className="bg-[#ECFCCB] px-6 py-2 rounded-lg shadow hover:shadow-md transition duration-300 flex items-center gap-2"
@@ -112,7 +130,7 @@ const Dashboard = () => {
                     </div>}
 
                 {/* Logout Button */}
-                <div className="pt-76 px-4">
+                <div className="pt-6 px-4 pb-2">
                     <button
                         className="flex items-center gap-3 w-full px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition duration-200 font-medium"
                     >
@@ -125,6 +143,7 @@ const Dashboard = () => {
             {/* main section  */}
             <div className='flex-1'>
                 <h2>Main Section</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse placeat suscipit, magni maiores saepe incidunt officia inventore fugiat laudantium? Debitis, suscipit repellendus? Iure soluta nobis autem expedita magni, officia a eveniet aliquam qui perspiciatis, non quod minima. Sunt sapiente adipisci earum molestiae exercitationem, laboriosam illum voluptatem necessitased doloribus suscipit. Amet corrupti deserunt facilis eos quia molestiae laudantium et omnis, magnam in nesciunt est veritatis officia veniam. Ducimus qui debitis, asperiores fugit cumque illo molestiae ratione error ullam expedita cono corporis.</p>
             </div>
 
         </div >
