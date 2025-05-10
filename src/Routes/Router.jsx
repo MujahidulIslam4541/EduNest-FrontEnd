@@ -10,6 +10,7 @@ import ContactUs from "../Pages/contactUs/ContactUs";
 import Classes from "../Pages/classes/classes";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import CourseDetails from "../Pages/courseDetails/CourseDetails";
+import AddCourse from "../Pages/Dashboard/addcourse/Addcourse";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +22,17 @@ const router = createBrowserRouter([
       { path: '/about', element: <AboutUs></AboutUs> },
       { path: '/contact', element: <ContactUs></ContactUs> },
       { path: '/classes', element: <Classes></Classes> },
-      {path:'/courseDetails',element:<CourseDetails></CourseDetails>},
+      { path: '/courseDetails', element: <CourseDetails></CourseDetails> },
       { path: "/signIn", element: <Login></Login> },
       { path: "/signUp", element: <Register></Register> }
     ],
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>
+    element: <Dashboard></Dashboard>,
+    children: [
+      { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> }
+    ]
   }
 ]);
 

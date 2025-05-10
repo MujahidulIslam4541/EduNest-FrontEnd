@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../../assets/Edu-Nest-Main-Logo-1.png'
-import { Link } from 'react-router'
+import { Link, Outlet } from 'react-router'
 import { GiHamburgerMenu, GiProgression } from "react-icons/gi";
 import { SiCoursera } from "react-icons/si";
 import { FaUserCircle, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
@@ -31,9 +31,7 @@ const Dashboard = () => {
             }
 
             {/* sidebar section */}
-            <div className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out w-64
-  ${isSideBarOpen ? 'translate-x-0' : '-translate-x-full'} 
-  lg:relative lg:translate-x-0 lg:block`}>
+            <div className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out w-64 ${isSideBarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0 lg:block`}>
 
                 {/* logo part */}
                 <div className=" py-4 px-6 flex justify-center items-center rounded-b-lg">
@@ -58,7 +56,7 @@ const Dashboard = () => {
                         </Link>
 
 
-                        <Link className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
+                        <Link to='/dashboard/addCourse' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
                             <MdOutlineAddHome className='text-xl' /> Add New Course
                         </Link>
 
@@ -142,8 +140,7 @@ const Dashboard = () => {
 
             {/* main section  */}
             <div className='flex-1'>
-                <h2>Main Section</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse placeat suscipit, magni maiores saepe incidunt officia inventore fugiat laudantium? Debitis, suscipit repellendus? Iure soluta nobis autem expedita magni, officia a eveniet aliquam qui perspiciatis, non quod minima. Sunt sapiente adipisci earum molestiae exercitationem, laboriosam illum voluptatem necessitased doloribus suscipit. Amet corrupti deserunt facilis eos quia molestiae laudantium et omnis, magnam in nesciunt est veritatis officia veniam. Ducimus qui debitis, asperiores fugit cumque illo molestiae ratione error ullam expedita cono corporis.</p>
+                <Outlet></Outlet>
             </div>
 
         </div >
