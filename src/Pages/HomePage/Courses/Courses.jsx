@@ -1,4 +1,4 @@
-import React from 'react'
+
 import coursesImage1 from '../../../assets/coursesImage1.jpg'
 import { Link } from 'react-router'
 
@@ -41,7 +41,7 @@ const Courses = () => {
               </p>
 
               <Link
-                to='/classDetails'
+                to='/courseDetails'
                 className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-indigo-600"
               >
                 Find out more
