@@ -13,6 +13,7 @@ import CourseDetails from "../Pages/courseDetails/CourseDetails";
 import AddCourse from "../Pages/Dashboard/addcourse/Addcourse";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> },
-      { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers>}
+      { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers> },
     ]
   }
 ]);

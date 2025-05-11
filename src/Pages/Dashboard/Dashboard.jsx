@@ -15,20 +15,20 @@ const Dashboard = () => {
 
     return (
         <div className='flex '>
-            {/* top navbar or header */}
-            <div className="lg:hidden p-4 ">
+            {/* Top Navbar or Header */}
+            <div className="fixed lg:hidden top-0 left-0 w-full  p-4 bg-white z-50 shadow-md">
                 <button onClick={() => setSideBarOpen(!isSideBarOpen)}>
-                    <GiHamburgerMenu className="text-2xl" />
+                    <GiHamburgerMenu className="text-2xl text-gray-800" />
                 </button>
             </div>
 
+            {/* Sidebar Overlay */}
             {
                 isSideBarOpen && (
-                    <div onClick={() => setSideBarOpen(false)} className="fixed inset-0 bg-black opacity-40 z-40 lg:hidden">
-
-                    </div>
+                    <div onClick={() => setSideBarOpen(false)} className="fixed inset-0 bg-black opacity-40 z-40 lg:hidden"></div>
                 )
             }
+
 
             {/* sidebar section */}
             <div className={`fixed top-0 left-0 h-full bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out w-64 ${isSideBarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0 lg:block`}>
@@ -76,15 +76,6 @@ const Dashboard = () => {
                             <MdManageAccounts className='text-xl' /> Manage Courses
                         </Link>
 
-                        <Link
-                            to="/dashboard/instructor-requests"
-                            className="flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium"
-                        >
-                            <FaUsers className="text-xl" />
-                            Instructor Requests
-                        </Link>
-
-
 
                         <Link className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <FaUserCircle className='text-xl' /> Admin Profile
@@ -128,7 +119,7 @@ const Dashboard = () => {
                     </div>}
 
                 {/* Logout Button */}
-                <div className="pt-6 px-4 pb-2">
+                <div className="pt-10 px-4 pb-6">
                     <button
                         className="flex items-center gap-3 w-full px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition duration-200 font-medium"
                     >
