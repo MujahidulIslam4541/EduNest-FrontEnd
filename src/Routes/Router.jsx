@@ -11,6 +11,7 @@ import Classes from "../Pages/classes/classes";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import CourseDetails from "../Pages/courseDetails/CourseDetails";
 import AddCourse from "../Pages/Dashboard/addcourse/Addcourse";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> }
+      { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> },
+      { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers>}
     ]
   }
 ]);

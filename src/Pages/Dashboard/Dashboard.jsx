@@ -68,7 +68,7 @@ const Dashboard = () => {
                             <PiStudent className='text-xl' /> Enrolled Student
                         </Link>
 
-                        <Link className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
+                        <Link to='/dashboard/manageUsers' className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <FaUsers className='text-xl' /> Manage Users
                         </Link>
 
