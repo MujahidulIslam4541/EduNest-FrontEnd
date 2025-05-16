@@ -60,7 +60,7 @@ const Dashboard = () => {
                             <MdOutlineAddHome className='text-xl' /> Add New Course
                         </Link>
 
-                        <Link className='flex items-center gap-3 px-6 py-2 rounded-xl bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
+                        <Link to='/dashboard/MyCourses' className='flex items-center gap-3 px-6 py-2 rounded-xl bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <FaChalkboardTeacher className='text-xl' /> My Courses
                         </Link>
 
@@ -72,7 +72,7 @@ const Dashboard = () => {
                             <FaUsers className='text-xl' /> Manage Users
                         </Link>
 
-                        <Link className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
+                        <Link  className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <MdManageAccounts className='text-xl' /> Manage Courses
                         </Link>
 
