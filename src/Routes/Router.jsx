@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> },
       { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers> },
       { path: '/dashboard/MyCourses', element: <MyCourses></MyCourses> },
-      { path: '/dashboard/AdminHome', element: <AdminHome></AdminHome> },
+      { index:true, element: <AdminHome></AdminHome> },
     ]
   }
 ]);

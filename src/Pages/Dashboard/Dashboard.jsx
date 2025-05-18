@@ -50,7 +50,7 @@ const Dashboard = () => {
 
                     // instructor/teacher section
                     <div className='space-y-4 px-4'>
-                        <Link to='/dashboard/AdminHome' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
+                        <Link to='/dashboard' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
                             <RiAdminLine className='text-xl' /> Admin Home
                         </Link>
 

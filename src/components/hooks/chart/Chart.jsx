@@ -12,8 +12,8 @@ const Chart = () => {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
     return (
-        <div className="w-full h-[400px] bg-white rounded-xl shadow-md p-10 ">
-            <h2 className="text-xl font-semibold mb-4 text-center">Course Enrollment Statistics</h2>
+        <div className="w-full  h-[400px] bg-white rounded-xl shadow-md p-10">
+            <h2 className="text-xl font-semibold mb-4 text-center">📊 Course Enrollment Statistics</h2>
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                     <Pie
