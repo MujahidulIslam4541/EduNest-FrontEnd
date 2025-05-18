@@ -5,8 +5,7 @@ import { GiHamburgerMenu, GiProgression } from "react-icons/gi";
 import { SiCoursera } from "react-icons/si";
 import { FaUserCircle, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
-import { MdManageAccounts, MdOutlineAddHome } from "react-icons/md";
-import { PiStudent } from "react-icons/pi";
+import { MdOutlineAddHome } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 
 const Dashboard = () => {
@@ -60,20 +59,9 @@ const Dashboard = () => {
                             <MdOutlineAddHome className='text-xl' /> Add New Course
                         </Link>
 
-                        <Link to='/dashboard/MyCourses' className='flex items-center gap-3 px-6 py-2 rounded-xl bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
-                            <FaChalkboardTeacher className='text-xl' /> My Courses
-                        </Link>
-
-                        <Link to='/dashboard/EnrolledStudent' className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
-                            <PiStudent className='text-xl' /> Enrolled Student
-                        </Link>
 
                         <Link to='/dashboard/manageUsers' className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <FaUsers className='text-xl' /> Manage Users
-                        </Link>
-
-                        <Link  className='flex items-center gap-3 px-4 py-2 bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
-                            <MdManageAccounts className='text-xl' /> Manage Courses
                         </Link>
 
 
@@ -119,7 +107,7 @@ const Dashboard = () => {
                     </div>}
 
                 {/* Logout Button */}
-                <div className="pt-10 px-4 pb-6">
+                <div className="pt-56 px-4 pb-9">
                     <button
                         className="flex items-center gap-3 w-full px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition duration-200 font-medium"
                     >

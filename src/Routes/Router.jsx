@@ -14,7 +14,6 @@ import AddCourse from "../Pages/Dashboard/addcourse/Addcourse";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
-import EnrolledStudent from "../Pages/Dashboard/EnroledStudent/EnrolledStudent";
 
 
 const router = createBrowserRouter([
@@ -40,7 +39,6 @@ const router = createBrowserRouter([
       { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers> },
       { path: '/dashboard/MyCourses', element: <MyCourses></MyCourses> },
       { path: '/dashboard/AdminHome', element: <AdminHome></AdminHome> },
-      { path: '/dashboard/EnrolledStudent', element: <EnrolledStudent></EnrolledStudent> },
     ]
   }
 ]);
