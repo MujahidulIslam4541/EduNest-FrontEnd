@@ -65,7 +65,7 @@ const Dashboard = () => {
                         </Link>
 
 
-                        <Link className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
+                        <Link to='/dashboard/AdminProfile' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium'>
                             <FaUserCircle className='text-xl' /> Admin Profile
                         </Link>
 
