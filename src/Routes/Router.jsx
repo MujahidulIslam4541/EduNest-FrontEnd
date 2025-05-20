@@ -15,6 +15,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import MyCourses from "../Pages/Dashboard/MyCourses/MyCourses";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
+import MyProgress from "../Pages/Dashboard/UserDashboard/MyProgroress/MyProgress";
 
 
 const router = createBrowserRouter([
@@ -36,11 +37,12 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      { index:true, element: <AdminHome></AdminHome> },
+      { index: true, element: <AdminHome></AdminHome> },
       { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> },
       { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers> },
       { path: '/dashboard/MyCourses', element: <MyCourses></MyCourses> },
-      {path:'/dashboard/AdminProfile',element:<AdminProfile></AdminProfile>}
+      { path: '/dashboard/AdminProfile', element: <AdminProfile></AdminProfile> },
+      { path: "/dashboard/myProgress", element: <MyProgress></MyProgress> }
     ]
   }
 ]);

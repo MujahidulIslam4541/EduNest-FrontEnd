@@ -9,7 +9,7 @@ import { MdOutlineAddHome } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 
 const Dashboard = () => {
-    const teacher = true;
+    const teacher = false;
     const [isSideBarOpen, setSideBarOpen] = useState(false)
 
     return (
@@ -74,7 +74,7 @@ const Dashboard = () => {
                     // student/user menu part
                     < div className="space-y-4 px-4">
                         <Link
-                            to="/dashboard/progress"
+                            to="/dashboard/myProgress"
                             className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] transition duration-200 text-base font-medium"
                         >
                             <GiProgression className="text-xl" />
