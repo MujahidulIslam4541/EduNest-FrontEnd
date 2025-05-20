@@ -17,6 +17,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import MyProgress from "../Pages/Dashboard/UserDashboard/MyProgroress/MyProgress";
 import MyEnrolledCourses from "../Pages/Dashboard/UserDashboard/MyEnorroledcourses/MyEnroledCourses";
+import UserProfile from "../Pages/Dashboard/UserDashboard/userProfile/UserProfile";
 
 
 const router = createBrowserRouter([
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
       { path: '/dashboard/MyCourses', element: <MyCourses></MyCourses> },
       { path: '/dashboard/AdminProfile', element: <AdminProfile></AdminProfile> },
       { path: "/dashboard/myProgress", element: <MyProgress></MyProgress> },
-      { path: "/dashboard/myEnrolledCourses", element: <MyEnrolledCourses></MyEnrolledCourses> }
+      { path: "/dashboard/myEnrolledCourses", element: <MyEnrolledCourses></MyEnrolledCourses> },
+      { path:"/dashboard/UserProfile", element: <UserProfile></UserProfile>}
     ]
   }
 ]);

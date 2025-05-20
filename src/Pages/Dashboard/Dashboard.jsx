@@ -103,7 +103,7 @@ const Dashboard = () => {
                             {InstructorModal}
                         </div>
                         <Link
-                            to="/dashboard/profile"
+                            to="/dashboard/UserProfile"
                             className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] transition duration-200 text-base font-medium"
                         >
                             <FaUserCircle className="text-xl" />
