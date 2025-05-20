@@ -7,10 +7,13 @@ import { FaUserCircle, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
 import { GrLogout } from "react-icons/gr";
 import { MdOutlineAddHome } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
+import useComeAInstructorModal from '../../components/hooks/instructorModal/Instructormodal';
 
 const Dashboard = () => {
     const teacher = false;
     const [isSideBarOpen, setSideBarOpen] = useState(false)
+
+    const { openModal, InstructorModal } = useComeAInstructorModal()
 
     return (
         <div className='flex '>
@@ -89,14 +92,16 @@ const Dashboard = () => {
                             My Courses
                         </Link>
 
-                        <Link
-                            to="/dashboard/become-instructor"
-                            className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] transition duration-200 text-base font-medium"
-                        >
-                            <FaChalkboardTeacher className="text-xl" />
-                            Become an Instructor
-                        </Link>
-
+                        <div>
+                            <button onClick={openModal}
+                                to="/dashboard/become-instructor"
+                                className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] transition duration-200 text-base font-medium"
+                            >
+                                <FaChalkboardTeacher className="text-xl" />
+                                Become an Instructor
+                            </button>
+                            {InstructorModal}
+                        </div>
                         <Link
                             to="/dashboard/profile"
                             className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] transition duration-200 text-base font-medium"
