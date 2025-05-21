@@ -14,22 +14,24 @@ const Login = () => {
 
   }
   return (
-    <div className="hero bg-base-200 min-h-screen px-4">
-      <div className="hero-content flex-col lg:flex-row-reverse gap-10 w-full max-w-6xl">
+    <div className="hero min-h-screen bg-base-200 px-4">
+      <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-12 w-full max-w-6xl">
 
         {/* Lottie Animation */}
         <div className="w-full max-w-md">
-          <Lottie animationData={loginLottieData} />
+          <Lottie animationData={loginLottieData} loop={true} />
         </div>
 
         {/* Login Card */}
-        <div className="card bg-base-100 w-full max-w-md shadow-2xl">
+        <div className="card w-full max-w-md bg-base-100 shadow-xl rounded-2xl">
           <div className="card-body">
-            <h2 className="text-2xl font-bold text-center mb-4">Login to Your Account</h2>
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Login to Your Account</h2>
+            <p className="text-center text-sm text-gray-500 mb-4">Welcome back! Please enter your credentials to continue.</p>
 
             <form onSubmit={handleLogin} className="space-y-4">
+              {/* Email Input */}
               <div>
-                <label className="label font-medium">Email</label>
+                <label className="label text-sm font-medium text-gray-700">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -38,8 +40,10 @@ const Login = () => {
                   placeholder="Enter your email"
                 />
               </div>
+
+              {/* Password Input */}
               <div>
-                <label className="label font-medium">Password</label>
+                <label className="label text-sm font-medium text-gray-700">Password</label>
                 <input
                   type="password"
                   name="password"
@@ -49,30 +53,31 @@ const Login = () => {
                 />
               </div>
 
-              <div className="flex justify-between items-center text-sm">
-                <a className="link link-hover text-blue-600">Forgot password?</a>
-                <p className="text-sm text-center">
-                  Don't have an account?
-                  <Link to="/signUp" className="text-blue-600 font-medium ml-1 hover:underline">
-                    Create one
-                  </Link>
-                </p>
-
+              {/* Forgot password and signup */}
+              <div className="flex justify-between text-sm text-gray-600">
+                <a href="#" className="hover:underline text-blue-600">Forgot password?</a>
+                <span>
+                  Don’t have an account?
+                  <Link to="/signUp" className="ml-1 font-medium text-blue-600 hover:underline">Sign up</Link>
+                </span>
               </div>
 
+              {/* Submit Button */}
               <button type="submit" className="btn btn-neutral w-full mt-2">Login</button>
             </form>
-            <div className='divider'>OR</div>
-            <div className='flex justify-center gap-2'>
-              <Google></Google>
-              <Facebook></Facebook>
+
+            {/* Divider */}
+            <div className="divider text-gray-400">OR</div>
+
+            {/* Social Login */}
+            <div className="flex justify-center gap-4">
+              <Google />
+              <Facebook />
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   )
 }
 

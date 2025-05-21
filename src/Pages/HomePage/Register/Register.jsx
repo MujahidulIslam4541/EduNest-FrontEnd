@@ -1,102 +1,126 @@
-import Lottie from 'lottie-react'
-import React from 'react'
-import { Link } from 'react-router'
-import RegisterLottieData from '../../../assets/Lotti/register.json'
-import { FaFileUpload } from 'react-icons/fa'
-import Google from '../../../components/hooks/LoginWithGoogle/Google'
-import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
-import { FiUploadCloud } from 'react-icons/fi'
-
+import Lottie from 'lottie-react';
+import { Link } from 'react-router-dom'; // Fixed: should be react-router-dom
+import RegisterLottieData from '../../../assets/Lotti/register.json';
+import Google from '../../../components/hooks/LoginWithGoogle/Google';
+import Facebook from '../../../components/hooks/loginWithFacebook/facebook';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const handleRegister = (e) => {
-    e.preventDefault()
-    const data = e.target;
-    const name = data.name.value
-    const email = data.email.value
-    const password = data.password.value
-    // const name=e.target.name.value;
-    // const email=e.target.email.value;
-    // const password=e.target.value;
-    console.log({ name, email, password })
-  }
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const terms = form.terms.checked;
+    if (!terms) {
+      toast.error("Please Accept Our Terms & Condition.")
+      return;
+    }
+    console.log({ name, email, password, terms });
+  };
+
   return (
-    <div className="hero bg-base-200 min-h-screen px-4">
-      <div className="hero-content flex-col lg:flex-row-reverse gap-10 w-full max-w-6xl">
+    <div className="hero min-h-screen bg-base-200 px-4">
+      <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-12 w-full max-w-6xl">
 
         {/* Lottie Animation */}
         <div className="w-full max-w-md">
-          <Lottie animationData={RegisterLottieData} />
+          <Lottie animationData={RegisterLottieData} loop={true} />
         </div>
 
-        {/* register section */}
-        <div className="card bg-base-100 w-full max-w-md shadow-2xl">
+        {/* Register Form Card */}
+        <div className="card w-full max-w-md bg-base-100 shadow-xl rounded-2xl">
           <div className="card-body">
-            <h2 className="text-2xl font-bold text-center mb-4">Create A New Account</h2>
-            <form onSubmit={handleRegister} action="" className='space-y-4'>
-              {/* name Field */}
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Create A New Account</h2>
+            <p className="text-sm text-gray-500 text-center mb-4">Join EduNest and start learning today!</p>
+
+            <form onSubmit={handleRegister} className="space-y-4">
+
+              {/* Name Field */}
               <div>
-                <label className='label font-medium'>Name</label>
-                <input type="text"
-                  name='name'
-                  className='input input-border w-full'
-                  placeholder='Please Enter Your Name'
-                  required />
-              </div>
-              {/* email Field */}
-              <div>
-                <label className='label font-medium'>Email</label>
-                <input type="email"
-                  name='email'
-                  className='input input-border w-full'
-                  placeholder='Please Enter Your Email'
-                  required />
-              </div>
-              {/* password field  */}
-              <div>
-                <label className="label font-medium">Password</label>
+                <label className="label text-sm font-medium text-gray-700">Name</label>
                 <input
-                  type="password"
-                  name="password"
-                  required
+                  type="text"
+                  name="name"
                   className="input input-bordered w-full"
-                  placeholder="Enter your password"
+                  placeholder="Enter your name"
+                  required
                 />
               </div>
-              {/* Image Filed */}
-              <div>
-                <label className='label font-medium mb-1'>Your Photo:</label>
-                <div className='relative w-40'>
-                  <input
-                    className='border rounded w-full p-2 pr-10'
-                    type='file'
-                  />
-                  <FiUploadCloud className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg' />
 
-                </div>
-              </div>
-              {/* Go to login page */}
+              {/* Email Field */}
               <div>
-                <p className="text-sm text-center">
-                  Already have an account?
-                  <Link to="/SignIn" className="text-blue-600 font-medium ml-1 hover:underline">
-                    SignIn
-                  </Link>
-                </p>
+                <label className="label text-sm font-medium text-gray-700">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="input input-bordered w-full"
+                  placeholder="Enter your email"
+                  required
+                />
               </div>
+
+              {/* Password Field */}
+              <div className="relative">
+                <label className="label text-sm font-medium text-gray-700">Password</label>
+
+                {/* Input Field with extra padding on right for icon */}
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  className="input input-bordered w-full pr-12"  // <-- pr-12 ensures padding space for icon
+                  placeholder="Enter your password"
+                  required
+                />
+
+                {/* Eye Icon Button */}
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[32px] text-gray-500" // Adjust top based on your input height
+                >
+                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+
+                </button>
+              </div>
+
+              {/* checkbox  */}
+              <label className="label">
+                <input type="checkbox" name='terms' className="checkbox" />
+                Accept Our Terms & Condition
+              </label>
+
+              {/* Login Redirect */}
+              <p className="text-sm text-center text-gray-600">
+                Already have an account?
+                <Link to="/signIn" className="ml-1 text-blue-600 font-medium hover:underline">
+                  Sign In
+                </Link>
+              </p>
+
               {/* Submit Button */}
-              <button type='submit' className='btn w-full btn-neutral'> SignUp</button>
+              <button type="submit" className="btn btn-neutral w-full mt-2">
+                Sign Up
+              </button>
             </form>
-            <div className="divider">OR</div>
-            <div className='flex gap-2 justify-center'>
-              <Google></Google>
-              <Facebook></Facebook>
+
+            <div className="divider text-gray-400">OR</div>
+
+            {/* Social Login */}
+            <div className="flex justify-center gap-4">
+              <Google />
+              <Facebook />
             </div>
           </div>
         </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
