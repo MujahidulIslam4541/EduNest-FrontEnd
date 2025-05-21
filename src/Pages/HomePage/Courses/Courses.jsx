@@ -1,8 +1,15 @@
 
-import coursesImage1 from '../../../assets/coursesImage1.jpg'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 
 const Courses = () => {
+  const [courses, setCourses] = useState([])
+  useEffect(() => {
+    fetch('/courses.json')
+      .then(res => res.json())
+      .then(data => setCourses(data))
+  }, [])
+  console.log(courses)
   return (
     <div className="container mx-auto max-w-7xl mt-16 px-4">
       {/* Headline */}
@@ -20,24 +27,22 @@ const Courses = () => {
 
       {/* Courses Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {[1, 2, 3].map((_, i) => (
+        {courses.map((course) => (
           <article
-            key={i}
+            key={course?.id}
             className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow hover:shadow-md transition-shadow duration-300"
           >
             <img
-              src={coursesImage1}
+              src={course?.image}
               alt="Course"
               className="w-full h-52 object-cover"
             />
             <div className="p-5">
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Front End Development With React
+                {course?.title}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">
-                Learn how to build modern and responsive web applications using
-                React. This course will guide you from basic concepts to advanced
-                techniques with hands-on projects.
+                {course.description}
               </p>
 
               <Link

@@ -27,7 +27,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="shadow-md bg-base-100 sticky top-0 z-50">
+        <div className="shadow-md bg-base-100 text-base-content sticky top-0 z-50">
             <div className="navbar max-w-7xl mx-auto px-4 py-3">
                 {/* Left: Logo & Mobile Menu */}
                 <div className="navbar-start">

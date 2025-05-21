@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10">
+            <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
                 <div>
                     <img src="\src\assets\Edu-Nest-Main-Logo-1.png" alt="" className='w-40 h-10' />
                 </div>

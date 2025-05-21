@@ -10,7 +10,7 @@ import { RiAdminLine } from "react-icons/ri";
 import useComeAInstructorModal from '../../components/hooks/instructorModal/Instructormodal';
 
 const Dashboard = () => {
-    const teacher = false;
+    const teacher = true;
     const [isSideBarOpen, setSideBarOpen] = useState(false)
 
     const { openModal, InstructorModal } = useComeAInstructorModal()
