@@ -1,18 +1,21 @@
-
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router'; // 🔁 Make sure you're using `react-router-dom`
 
 const Courses = () => {
-  const [courses, setCourses] = useState([])
+  const [courses, setCourses] = useState([]);
+
+  // 📦 Load course data from public folder (courses.json)
   useEffect(() => {
     fetch('/courses.json')
       .then(res => res.json())
       .then(data => setCourses(data))
-  }, [])
-  console.log(courses)
+      .catch(err => console.error("Failed to fetch courses:", err));
+  }, []);
+
   return (
     <div className="container mx-auto max-w-7xl mt-16 px-4">
-      {/* Headline */}
+
+      {/* 🔖 Section Header */}
       <div className="text-center mb-10">
         <p className="text-sm text-indigo-500 font-medium uppercase tracking-wide">
           Find a course
@@ -25,29 +28,33 @@ const Courses = () => {
         </p>
       </div>
 
-      {/* Courses Grid */}
+      {/* 📚 Courses Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {courses.map((course) => (
           <article
             key={course?.id}
-            className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow hover:shadow-md transition-shadow duration-300"
+            className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow hover:shadow-xl transition-transform duration-300 transform hover:-translate-y-1"
           >
+            {/* 📸 Course Image */}
             <img
               src={course?.image}
-              alt="Course"
-              className="w-full h-52 object-cover"
+              alt={course?.title}
+              className="w-full h-52 object-cover hover:scale-105 transition-transform duration-300"
             />
+
+            {/* 📄 Course Content */}
             <div className="p-5">
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 {course?.title}
               </h3>
-              <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">
-                {course.description}
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                {course?.description}
               </p>
 
+              {/* 🔗 Course Details Link */}
               <Link
-                to='/courseDetails'
-                className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-indigo-600"
+                to="/courseDetails"
+                className="group mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
               >
                 Find out more
                 <span
@@ -62,8 +69,7 @@ const Courses = () => {
         ))}
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Courses
+export default Courses;

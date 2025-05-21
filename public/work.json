@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "📚",
+    "title": "Browse Courses",
+    "description": "Explore our curated list of courses and find what fits you best."
+  },
+  {
+    "icon": "📝",
+    "title": "Enroll Easily",
+    "description": "Sign up and enroll in your chosen course with just a few clicks."
+  },
+  {
+    "icon": "🎥",
+    "title": "Start Learning",
+    "description": "Watch video lessons and complete modules at your own pace."
+  },
+  {
+    "icon": "🎓",
+    "title": "Achieve Certificate",
+    "description": "Complete the course and receive a certificate of achievement."
+  }
+]
