@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../../assets/Edu-Nest-Main-Logo-1.png'
-import { Link, Outlet } from 'react-router'
+import { Link, Outlet, useNavigate } from 'react-router'
 import { GiHamburgerMenu, GiProgression } from "react-icons/gi";
 import { SiCoursera } from "react-icons/si";
 import { FaUserCircle, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
@@ -8,8 +8,24 @@ import { GrLogout } from "react-icons/gr";
 import { MdOutlineAddHome } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 import useComeAInstructorModal from '../../components/hooks/instructorModal/Instructormodal';
+import UseAuth from '../../components/hooks/UseAuth/UseAuth';
+import toast from 'react-hot-toast';
 
 const Dashboard = () => {
+const navigate=useNavigate()
+
+    // User LogOut function
+    const { logOut } = UseAuth()
+    const handleLogOut = () => {
+        logOut().then(() => {
+            toast.success('user LogOut SuccessFull')
+            navigate('/')
+        }).catch((error) => {
+            toast.error(error.massage)
+        })
+    }
+
+
     const teacher = true;
     const [isSideBarOpen, setSideBarOpen] = useState(false)
 
@@ -53,7 +69,7 @@ const Dashboard = () => {
 
                     // instructor/teacher section
                     <div className='space-y-4 px-4'>
-                        <Link to='/dashboard' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
+                        <Link to='/dashboard/AdminHome' className='flex items-center gap-3 px-4 py-2 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7E8] transition duration-200 text-base font-medium' >
                             <RiAdminLine className='text-xl' /> Admin Home
                         </Link>
 
@@ -113,7 +129,7 @@ const Dashboard = () => {
 
                 {/* Logout Button */}
                 <div className="pt-56 px-4 pb-9">
-                    <button
+                    <button onClick={handleLogOut}
                         className="flex items-center gap-3 w-full px-4 py-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition duration-200 font-medium"
                     >
                         <GrLogout className="text-xl" />

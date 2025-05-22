@@ -1,14 +1,24 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import DarkMode from '../themeController/DarkMode';
+import UseAuth from '../hooks/UseAuth/UseAuth';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+    const { logOut } = UseAuth()
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Contact Us', path: '/contact' },
         { name: 'My Classes', path: '/classes' },
     ];
+    const handleLogOut = () => {
+        logOut().then(() => {
+            toast.success('user LogOut SuccessFull')
+        }).catch((error) => {
+            toast.error(error.massage)
+        })
+    }
 
     const renderNavLink = ({ name, path }) => (
         <li key={path}>
@@ -84,7 +94,7 @@ const Navbar = () => {
                         >
                             <li><Link to="/profile">Profile</Link></li>
                             <li><Link to="/dashboard">Dashboard</Link></li>
-                            <li><button className="text-red-600">Logout</button></li>
+                            <li><button onClick={handleLogOut} className="text-red-600">Logout</button></li>
                         </ul>
                     </div>
                 </div>

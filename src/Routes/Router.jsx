@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
-      { index: true, element: <AdminHome></AdminHome> },
+      { path:'/dashboard/AdminHome', element: <AdminHome></AdminHome> },
       { path: '/dashboard/addCourse', element: <AddCourse></AddCourse> },
       { path: '/dashboard/manageUsers', element: <ManageUsers></ManageUsers> },
       { path: '/dashboard/MyCourses', element: <MyCourses></MyCourses> },

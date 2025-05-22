@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import { Link } from 'react-router-dom'; // Fixed: should be react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Fixed: should be react-router-dom
 import RegisterLottieData from '../../../assets/Lotti/register.json';
 import Google from '../../../components/hooks/LoginWithGoogle/Google';
 import Facebook from '../../../components/hooks/loginWithFacebook/facebook';
@@ -10,7 +10,7 @@ import UseAuth from '../../../components/hooks/UseAuth/UseAuth';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
-
+const navigate=useNavigate()
   const { createUser } = UseAuth()
 
   const handleRegister = (e) => {
@@ -48,6 +48,7 @@ const Register = () => {
         if (user) {
           // Show success message on successful registration
           toast.success("Welcome aboard! Your account has been created.");
+          navigate('/')
         }
       })
       .catch((error) => {

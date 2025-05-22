@@ -1,27 +1,43 @@
 import React, { useState } from 'react'
 import loginLottieData from '../../../assets/Lotti/Login.json'
 import Lottie from 'lottie-react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import Google from '../../../components/hooks/LoginWithGoogle/Google'
 import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import UseAuth from '../../../components/hooks/UseAuth/UseAuth'
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const { loginUser } = UseAuth()
+  const { loginUser } = UseAuth();
+  const navigate=useNavigate()
+
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get email and password values from the form
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    loginUser(email, password).then(result => {
-      const user = result.user
-      console.log(user)
-    })
-    console.log({ email, password })
+    // Attempt to log in the user
+    loginUser(email, password)
+      .then(result => {
+        const user = result.user;
+        if (user) {
+          toast.success("Login successful!");
+          navigate('/')
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          toast.error('Please enter valid password')
+          return;
+        }
+      });
 
-  }
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200 px-4">
       <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-12 w-full max-w-6xl">
