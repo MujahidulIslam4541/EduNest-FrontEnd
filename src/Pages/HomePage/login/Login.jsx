@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import loginLottieData from '../../../assets/Lotti/Login.json'
 import Lottie from 'lottie-react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import Google from '../../../components/hooks/LoginWithGoogle/Google'
 import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
@@ -12,6 +12,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { loginUser } = UseAuth();
   const navigate=useNavigate()
+  const location=useLocation()
+
+  const  from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -26,7 +29,7 @@ const Login = () => {
         const user = result.user;
         if (user) {
           toast.success("Login successful!");
-          navigate('/')
+          navigate(from, { replace: true });
         }
       })
       .catch((error) => {
