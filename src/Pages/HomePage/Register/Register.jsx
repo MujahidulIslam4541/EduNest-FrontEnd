@@ -6,22 +6,62 @@ import Facebook from '../../../components/hooks/loginWithFacebook/facebook';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import UseAuth from '../../../components/hooks/UseAuth/UseAuth';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
+
+  const { createUser } = UseAuth()
+
   const handleRegister = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
+
+    // Extract form input values
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const terms = form.terms.checked;
+
+    // Check if terms & conditions are accepted
     if (!terms) {
-      toast.error("Please Accept Our Terms & Condition.")
+      toast.error("Please accept our Terms & Conditions.");
       return;
     }
+
+    // Validate email format
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    // Validate password length
+    if (!password || password.length < 8) {
+      toast.error('Password must be at least 8 characters');
+      return;
+    }
+
+    // Attempt to create user with Firebase
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        if (user) {
+          // Show success message on successful registration
+          toast.success("Welcome aboard! Your account has been created.");
+        }
+      })
+      .catch((error) => {
+        // Show error message if registration fails
+        if (error) {
+          toast.error(error.message);
+          return; // ✅ Fixed typo: message instead of massage
+        }
+      });
+
+    // Log form values for debugging (optional)
     console.log({ name, email, password, terms });
   };
+
 
   return (
     <div className="hero min-h-screen bg-base-200 px-4">

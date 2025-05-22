@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import loginLottieData from '../../../assets/Lotti/Login.json'
 import Lottie from 'lottie-react'
 import { Link } from 'react-router'
 import Google from '../../../components/hooks/LoginWithGoogle/Google'
 import Facebook from '../../../components/hooks/loginWithFacebook/facebook'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import UseAuth from '../../../components/hooks/UseAuth/UseAuth'
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const { loginUser } = UseAuth()
   const handleLogin = (e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    loginUser(email, password).then(result => {
+      const user = result.user
+      console.log(user)
+    })
     console.log({ email, password })
 
   }
@@ -41,16 +50,28 @@ const Login = () => {
                 />
               </div>
 
-              {/* Password Input */}
-              <div>
+              {/* Password Field */}
+              <div className="relative">
                 <label className="label text-sm font-medium text-gray-700">Password</label>
+
+                {/* Input Field with extra padding on right for icon */}
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   name="password"
-                  required
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full pr-12"  // <-- pr-12 ensures padding space for icon
                   placeholder="Enter your password"
+                  required
                 />
+
+                {/* Eye Icon Button */}
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-[32px] text-gray-500" // Adjust top based on your input height
+                >
+                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+
+                </button>
               </div>
 
               {/* Forgot password and signup */}
