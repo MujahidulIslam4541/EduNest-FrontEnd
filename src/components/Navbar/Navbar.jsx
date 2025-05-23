@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { NavLink, Link } from 'react-router-dom';
 import DarkMode from '../themeController/DarkMode';
 import UseAuth from '../hooks/UseAuth/UseAuth';
@@ -83,7 +83,7 @@ const Navbar = () => {
                             <div className="w-10 rounded-full ring-2 ring-blue-400 hover:scale-105 transition">
                                 <img
                                     alt="User Avatar"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                    src={user && user?.photoURL ? user?.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
                                 />
                             </div>
                         </div>

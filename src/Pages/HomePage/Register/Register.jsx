@@ -10,8 +10,8 @@ import UseAuth from '../../../components/hooks/UseAuth/UseAuth';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
-const navigate=useNavigate()
-  const { createUser } = UseAuth()
+  const navigate = useNavigate()
+  const { createUser, updateUserProfile } = UseAuth()
 
   const handleRegister = (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -20,6 +20,7 @@ const navigate=useNavigate()
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
     const terms = form.terms.checked;
 
@@ -48,6 +49,11 @@ const navigate=useNavigate()
         if (user) {
           // Show success message on successful registration
           toast.success("Welcome aboard! Your account has been created.");
+          // UpdateUser Profile
+          updateUserProfile(name, photo)
+            .then(() => {
+              console.log('user profile updated')
+            })
           navigate('/')
         }
       })
@@ -58,9 +64,6 @@ const navigate=useNavigate()
           return; // ✅ Fixed typo: message instead of massage
         }
       });
-
-    // Log form values for debugging (optional)
-    console.log({ name, email, password, terms });
   };
 
 
@@ -101,6 +104,18 @@ const navigate=useNavigate()
                   name="email"
                   className="input input-bordered w-full"
                   placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              {/* Photo Field */}
+              <div>
+                <label className="label text-sm font-medium text-gray-700">Photo URL</label>
+                <input
+                  type="url"
+                  name="photo"
+                  className="input input-bordered w-full"
+                  placeholder="Enter your photo URL"
                   required
                 />
               </div>
