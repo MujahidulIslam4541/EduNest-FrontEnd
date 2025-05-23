@@ -49,6 +49,7 @@ const Register = () => {
         if (user) {
           // Show success message on successful registration
           toast.success("Welcome aboard! Your account has been created.");
+
           // UpdateUser Profile
           updateUserProfile(name, photo)
             .then(() => {

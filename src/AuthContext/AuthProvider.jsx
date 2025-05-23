@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, FacebookAuthProvider, updateProfile } from "firebase/auth";
 import { app } from "../components/firebase/Firebase.Config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null)
@@ -47,7 +48,7 @@ const AuthProvider = ({ children }) => {
 
     // updateUserProfile
     const updateUserProfile = (name, photo) => {
-       return updateProfile(auth.currentUser, {
+        return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     }
@@ -55,7 +56,28 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            console.log('currentUser ', currentUser )
+
+
+
+            const email = currentUser?.email;
+            console.log(email)
+            if (currentUser) {
+                // get jwt token and get store client/http Cookie
+
+                axios.post(`${import.meta.env.VITE_EDUNEST_SERVER}/jwt`, {email})
+                    .then(data => {
+                        console.log('jwt token',data.data.token)
+                    })
+            }
+            else {
+                // remove if token 
+            }
+
+
+
+
+
+            console.log('currentUser ', currentUser)
             setLoading(false)
         })
         return () => {
