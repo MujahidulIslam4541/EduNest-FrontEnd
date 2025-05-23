@@ -5,7 +5,7 @@ import UseAuth from '../hooks/UseAuth/UseAuth';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
-    const { logOut } = UseAuth()
+    const { logOut, user } = UseAuth()
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
@@ -70,14 +70,13 @@ const Navbar = () => {
 
                 {/* Right: Theme Toggle, Login, Avatar */}
                 <div className="navbar-end space-x-3">
-                    <DarkMode />
-
-                    <NavLink
+                    <DarkMode></DarkMode>
+                    {user ? '' : <NavLink
                         to="/signIn"
                         className="btn btn-outline btn-sm hidden sm:inline-flex border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white transition duration-300"
                     >
                         Sign In
-                    </NavLink>
+                    </NavLink>}
 
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
