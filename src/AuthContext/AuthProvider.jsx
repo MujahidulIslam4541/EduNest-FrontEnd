@@ -64,9 +64,9 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // get jwt token and get store client/http Cookie
 
-                axios.post(`${import.meta.env.VITE_EDUNEST_SERVER}/jwt`, {email})
-                    .then(data => {
-                        console.log('jwt token',data.data.token)
+                axios.post(`${import.meta.env.VITE_EDUNEST_SERVER}/jwt`, { email }, { withCredentials: true })
+                    .then(res => {
+                        console.log('jwt token', res.data)
                     })
             }
             else {
