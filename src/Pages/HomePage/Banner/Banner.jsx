@@ -21,7 +21,9 @@ const Banner = () => {
 
           <p className="text-gray-700 text-base md:text-lg leading-relaxed">
             Master in-demand skills from expert instructors. Learn at your own pace, anytime, anywhere. Start your learning journey today with our curated online courses.
+            Gain real-world knowledge through interactive lessons, hands-on projects, and expert mentorship. Whether you're looking to advance your career, explore a new field, or simply sharpen your skills — we’ve got the right course for you.
           </p>
+
 
           <button className="btn bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-8 py-2 rounded-lg shadow transition">
             Get Started
