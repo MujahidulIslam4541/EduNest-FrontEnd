@@ -1,7 +1,14 @@
 
 import { FaEnvelope, FaGraduationCap, FaUserEdit, FaUserShield } from 'react-icons/fa';
+import Modal from '../../../../components/modal/Modal';
 
 const UserProfile = () => {
+
+    const handleModal = () => {
+        console.log('clicked button')
+    }
+
+
     // Example user data (you should replace this with dynamic user data from context, Firebase, or backend)
     const user = {
         name: 'Mujahidul Islam Rifat',
@@ -58,7 +65,7 @@ const UserProfile = () => {
                     )}
 
                     <div className="pt-4">
-                        <button className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl font-semibold shadow-lg transition-all duration-300">
+                        <button onClick={handleModal} className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl font-semibold shadow-lg transition-all duration-300">
                             <FaUserEdit />
                             Edit Profile
                         </button>
