@@ -7,11 +7,13 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import UseAuth from '../../../components/hooks/UseAuth/UseAuth';
+import UseAxiosPublic from '../../../components/hooks/UseAxiosPublic/UseAxiosPublic';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
   const { createUser, updateUserProfile } = UseAuth()
+  const axiosPublic = UseAxiosPublic()
 
   const handleRegister = (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -47,15 +49,23 @@ const Register = () => {
       .then(result => {
         const user = result.user;
         if (user) {
-          // Show success message on successful registration
-          toast.success("Welcome aboard! Your account has been created.");
-
           // UpdateUser Profile
           updateUserProfile(name, photo)
             .then(() => {
-              console.log('user profile updated')
+              const userInfo = {
+                name: name,
+                email: email,
+                role: 'student',
+                degree: 'not Available'
+              }
+              // userinfo save in data base
+              axiosPublic.post('/users', userInfo).then(() => {
+                console.log('userinfo save in data base')
+                toast.success("Welcome aboard! Your account has been created.");
+                navigate('/')
+              })
+
             })
-          navigate('/')
         }
       })
       .catch((error) => {
