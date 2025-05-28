@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecuire/UseAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import {
+  useQuery,
+} from '@tanstack/react-query'
 
 const ManageUsers = () => {
-  const [users, setUsers] = useState([]);
   const axiosSecure = UseAxiosSecure();
-
-  // Get all user form database
-  useEffect(() => {
-    axiosSecure('/users').then(res => {
-      setUsers(res.data)
-    }).catch(error => {
-      console.error('Failed to fetch users:', error);
-    })
-
-  }, []);
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ['users'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/users');
+      return res.data;
+    }
+  })
 
   // delete user form database
   const handleDeleteUser = (user) => {
@@ -37,6 +35,7 @@ const ManageUsers = () => {
               text: `${user?.name || "The user"} has been removed successfully.`,
               icon: "success"
             });
+            refetch()
           }
         })
       }
