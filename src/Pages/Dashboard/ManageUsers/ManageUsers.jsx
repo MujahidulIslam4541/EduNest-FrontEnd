@@ -7,6 +7,8 @@ import {
 
 const ManageUsers = () => {
   const axiosSecure = UseAxiosSecure();
+
+
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
@@ -42,6 +44,33 @@ const ManageUsers = () => {
     });
   }
 
+  // update user role and make admin/instructor
+  const handleMakeAdmin = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Do you want to make ${user?.name || 'this user'} an instructor?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, make instructor"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/admin/${user?._id}`)
+          .then(res => {
+            if (res.data.modifiedCount > 0) {
+              Swal.fire({
+                title: "Success!",
+                text: `${user?.name} has been promoted to instructor.`,
+                icon: "success"
+              });
+              refetch();
+            }
+          });
+      }
+    });
+  };
+
 
 
   return (
@@ -57,44 +86,42 @@ const ManageUsers = () => {
         <table className="min-w-full bg-white text-left border border-gray-200">
           <thead className="bg-gray-100 text-gray-700">
             <tr>
-              <th className="px-6 py-3">#</th>
-              <th className="px-6 py-3">Name</th>
-              <th className="px-6 py-3">Email</th>
-              <th className="px-6 py-3">Role</th>
-              <th className="px-6 py-3">Degree / Info</th>
-              <th className="px-6 py-3 text-center">Action</th>
+              <th className="px-4 py-3 w-12">#</th>
+              <th className="px-4 py-3 w-40">Name</th>
+              <th className="px-4 py-3 w-56">Email</th>
+              <th className="px-4 py-3 w-28">Role</th>
+              <th className="px-4 py-3 w-40">Degree / Info</th>
+              <th className="px-4 py-3 w-64 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index) => {
-              const isInstructor = user.role === "instructor";
-              const hasRequested = user.isInstructorRequest;
+              const isInstructor = user?.role === "instructor";
+              const hasRequested = user?.isInstructorRequest;
 
               return (
                 <tr key={user?._id} className="border-t">
-
-                  <td className="px-6 py-4">{index + 1}</td>
-                  <td className="px-6 py-4">{user.name}</td>
-                  <td className="px-6 py-4">{user.email}</td>
-                  <td className="px-6 py-4 capitalize">{user.role}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4">{index + 1}</td>
+                  <td className="px-4 py-4">{user.name}</td>
+                  <td className="px-4 py-4">{user.email}</td>
+                  <td className="px-4 py-4 capitalize">{user.role}</td>
+                  <td className="px-4 py-4">
                     {user.degree ? (
                       `🎓 ${user.degree}`
                     ) : (
                       <span className="text-red-500 font-medium">Unavailable</span>
                     )}
-
                   </td>
 
-
-                  <td className="px-6 py-4 text-center">
-                    <div className="flex justify-center items-center gap-2 flex-wrap">
+                  <td className="px-4 py-4 text-center">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
                       {isInstructor ? (
                         <span className="text-green-600 font-medium text-sm">
                           Already Instructor
                         </span>
                       ) : hasRequested ? (
                         <button
+                          onClick={() => handleMakeAdmin(user)}
                           className="px-4 py-2 bg-[#84CC16] hover:bg-[#84CC18] text-white text-sm font-semibold rounded-lg shadow-md transition duration-300"
                         >
                           Make Instructor
@@ -103,7 +130,6 @@ const ManageUsers = () => {
                         <span className="text-gray-400 text-sm">—</span>
                       )}
 
-                      {/* user delete button */}
                       <button
                         onClick={() => handleDeleteUser(user)}
                         className="flex items-center gap-2 px-3 py-2 bg-red-100 text-red-600 border border-red-300 hover:bg-red-200 hover:text-red-700 text-sm font-medium rounded-md transition duration-200"
@@ -113,13 +139,12 @@ const ManageUsers = () => {
                       </button>
                     </div>
                   </td>
-
-
                 </tr>
               );
             })}
           </tbody>
         </table>
+
       </div>
     </div>
   );
