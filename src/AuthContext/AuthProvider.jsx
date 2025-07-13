@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, FacebookAuthProvider, updateProfile } from "firebase/auth";
 import { app } from "../components/firebase/Firebase.Config";
-import axios from "axios";
+import UseAxiosPublic from "../components/hooks/UseAxiosPublic/UseAxiosPublic";
 
 
 export const AuthContext = createContext(null)
@@ -11,6 +11,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const axiosPublic=UseAxiosPublic()
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider()
@@ -64,7 +65,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // get jwt token and get store client/http Cookie
 
-                axios.post(`${import.meta.env.VITE_EDUNEST_SERVER}/jwt`, { email }, { withCredentials: true })
+                axiosPublic.post(`/jwt`, { email }, { withCredentials: true })
                     .then(res => {
                         console.log('jwt token', res.data)
                     })
