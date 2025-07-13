@@ -10,7 +10,7 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about' },
         { name: 'Contact Us', path: '/contact' },
-        { name: 'My Classes', path: '/classes' },
+        // { name: 'My Classes', path: '/classes' },
     ];
     const handleLogOut = () => {
         logOut().then(() => {

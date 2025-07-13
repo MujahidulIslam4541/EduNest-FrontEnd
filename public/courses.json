@@ -3,18 +3,33 @@
     "id": 1,
     "title": "Front End Development With React",
     "description": "Learn how to build modern and responsive web applications using React. This course will guide you from basic concepts to advanced techniques with hands-on projects.",
-    "image": "https://i.ibb.co/0pVqFFZ9/course-1674371266.jpg"
+    "image": "https://i.ibb.co/0pVqFFZ9/course-1674371266.jpg",
+    "instructor": "Sarah Williams",
+    "price": 1499,
+    "rating": 4.7,
+    "duration": "6 weeks",
+    "videos": 15
   },
   {
     "id": 2,
     "title": "Mastering JavaScript from Scratch",
     "description": "A complete JavaScript guide for beginners to advanced learners. Covers ES6+, DOM manipulation, and more.",
-    "image": "https://i.ibb.co/DgfsJqxm/download-1.jpg"
+    "image": "https://i.ibb.co/0VnzP01Y/Master-Java-Script-From-Beginner-to-Advanced-cta-Explore-now.webp",
+    "instructor": "David Johnson",
+    "price": 1299,
+    "rating": 4.6,
+    "duration": "5 weeks",
+    "videos": 18
   },
   {
     "id": 3,
     "title": "UI/UX Design Principles",
     "description": "Understand design thinking, wireframing, and prototyping. Make stunning user interfaces with practical examples.",
-    "image": "https://i.ibb.co/d0Yjptjq/top-12-key-ui-ux-design-principles.webp"
+    "image": "https://i.ibb.co/d0Yjptjq/top-12-key-ui-ux-design-principles.webp",
+    "instructor": "Emily Carter",
+    "price": 999,
+    "rating": 4.8,
+    "duration": "4 weeks",
+    "videos": 10
   }
 ]

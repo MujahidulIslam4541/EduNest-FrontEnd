@@ -53,7 +53,7 @@ const Courses = () => {
 
               {/* 🔗 Course Details Link */}
               <Link
-                to="/courseDetails"
+                to={`/courseDetails/${course?.id}`}
                 className="group mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
               >
                 Find out more
