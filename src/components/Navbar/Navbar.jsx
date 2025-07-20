@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import DarkMode from '../themeController/DarkMode';
 import UseAuth from '../hooks/UseAuth/UseAuth';
 import toast from 'react-hot-toast';
+import navImage from '../../assets/Edu-Nest-Main-Logo-1.png'
 
 const Navbar = () => {
     const { logOut, user } = UseAuth()
@@ -56,7 +57,7 @@ const Navbar = () => {
                     </div>
                     <Link to="/">
                         <img
-                            src="/src/assets/Edu-Nest-Main-Logo-1.png"
+                            src={navImage}
                             alt="EduNest Logo"
                             className="w-40 h-10 object-contain"
                         />
